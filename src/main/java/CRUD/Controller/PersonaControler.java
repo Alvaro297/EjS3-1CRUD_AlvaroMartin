@@ -24,7 +24,7 @@ public class PersonaControler {
     PersonaRepository personaRepository;
 
     private IFeign iFeign;
-
+    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
     @PostMapping("/addPersona")
     public String addPersona(@RequestBody PersonaInputDTO persona) {
         try{
