@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -37,29 +38,17 @@ public class PersonaControler {
 
     @GetMapping("/getPerson/{id}")
     public Persona getPersonById(@PathVariable String id) {
-        try{
-            return personaRepository.findById(id).orElseThrow(()->new Exception("No encontrado"));
-        }catch (Exception e){
-            throw new BeanNotFoundException(e.getMessage());
-        }
+       return personaService.findById(id);
     }
 
     @GetMapping("/getPersona")
-    public List<Persona> getPersona(){
-        try{
-            return personaRepository.findAll();
-        }catch (Exception e){
-             throw new BeanNotFoundException(e.getMessage());
-        }
+    public List<Persona> getAllPersona(){
+       return personaService.getAllPersona();
     }
 
     @GetMapping("/getPerson/name/{name}")
     public List<PersonaOutputDTO> deletePersonaByName(@PathVariable String name) {
-        try{
-            return personaRepository.findByName(name);
-         }catch (Exception e){
-             throw new BeanNotFoundException(e.getMessage());
-         }
+        return personaService.findByName(name);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -74,7 +63,7 @@ public class PersonaControler {
     }
 
     @GetMapping("/IFeign/{id}")
-    public ResponseEntity findProfesorUsingFeign(@PathVariable String id){
+    public ResponseEntity buscarConFeign(@PathVariable String id){
         ResponseEntity<OutputProfesorDTO> profesor = iFeign.getProfesorById(id);
         return ResponseEntity.ok(profesor.getBody());
     }
@@ -83,6 +72,12 @@ public class PersonaControler {
     public ResponseEntity<OutputProfesorDTO> buscarProfesor(@PathVariable String id){
         ResponseEntity<OutputProfesorDTO> rs = new RestTemplate().getForEntity("http://localhost:8081/profesor/getProfesor/"+id,OutputProfesorDTO.class);
         return ResponseEntity.ok(rs.getBody());
+    }
+
+    @GetMapping("/getData")
+    public ResponseEntity<?> getDataConditions(@RequestParam HashMap<String, Object> conditions) {
+
+        return ResponseEntity.ok(personaRepository.getDataConditions(conditions));
     }
 
 

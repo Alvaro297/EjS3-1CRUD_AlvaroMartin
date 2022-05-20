@@ -6,6 +6,7 @@ import CRUD.StringPrefixedSequenceIdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -44,6 +45,8 @@ public class Persona {
     private Date createDate;
     private String imagenUrl;
     private Date terminationDate;
+    @NonNull
+    private boolean admin;
 
     public Persona(PersonaInputDTO personaInputDTO){
         if (personaInputDTO==null){
@@ -60,5 +63,6 @@ public class Persona {
         setPersonalEmail(personaInputDTO.getPersonalEmail());
         setUser(personaInputDTO.getUser());
         setTerminationDate(personaInputDTO.getTerminationDate());
+        setAdmin(personaInputDTO.isAdmin());
     }
 }

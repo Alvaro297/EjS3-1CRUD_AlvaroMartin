@@ -22,6 +22,7 @@ public class PersonaInputDTO {
     private Date createDate;
     private String imagenUrl;
     private Date terminationDate;
+    private boolean admin;
 
     public PersonaInputDTO(Persona persona){
         setPersonId(persona.getPersonId());
@@ -35,6 +36,7 @@ public class PersonaInputDTO {
         setPersonalEmail(persona.getPersonalEmail());
         setUser(persona.getUser());
         setTerminationDate(persona.getTerminationDate());
+        setAdmin(persona.isAdmin());
 
     }
 }
