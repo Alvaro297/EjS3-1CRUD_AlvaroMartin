@@ -46,7 +46,7 @@ public class Persona {
     private String imagenUrl;
     private Date terminationDate;
     @NonNull
-    private boolean admin;
+    private String admin;
 
     public Persona(PersonaInputDTO personaInputDTO){
         if (personaInputDTO==null){
@@ -63,6 +63,6 @@ public class Persona {
         setPersonalEmail(personaInputDTO.getPersonalEmail());
         setUser(personaInputDTO.getUser());
         setTerminationDate(personaInputDTO.getTerminationDate());
-        setAdmin(personaInputDTO.isAdmin());
+        setAdmin(personaInputDTO.getAdmin());
     }
 }

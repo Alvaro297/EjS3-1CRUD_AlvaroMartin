@@ -36,7 +36,7 @@ public class PersonaControler {
         return "Persona creada correctamente";
     }
 
-    @GetMapping("/getPerson/{id}")
+    @GetMapping("/getPersona/{id}")
     public Persona getPersonById(@PathVariable String id) {
        return personaService.findById(id);
     }
@@ -46,7 +46,7 @@ public class PersonaControler {
        return personaService.getAllPersona();
     }
 
-    @GetMapping("/getPerson/name/{name}")
+    @GetMapping("/getPersona/name/{name}")
     public List<PersonaOutputDTO> deletePersonaByName(@PathVariable String name) {
         return personaService.findByName(name);
     }
