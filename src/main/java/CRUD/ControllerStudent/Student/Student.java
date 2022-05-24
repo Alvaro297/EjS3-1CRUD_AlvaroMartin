@@ -39,7 +39,7 @@ public class Student {
     private List<Subject> subjects;
 
     @OneToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "personId")
     @NotNull
     Persona persona;
 
@@ -47,14 +47,12 @@ public class Student {
     private Integer numHoursWeek;
 
     @NotNull
-    @Column(name = "branch")
     private String materia;
 
-    @Column(name = "coments")
     private String comentarios;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_profesor")
+    @JoinColumn(name = "idProfesor")
     private Profesor profesor;
 
     public Student(InputStudentDto studentDto) throws Exception {

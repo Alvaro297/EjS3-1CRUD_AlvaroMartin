@@ -30,10 +30,10 @@ public class LoginController {
             throws NotFoundException, UnprocesableException
     {
         List<PersonaOutputDTO> lista = personaI.findByName(username);
-        if(lista.size() == 0) throw new NotFoundException("Usuario " + username+ "no encontrado");
-        if (lista.size() > 1) throw new UnprocesableException("Usuario repetido");
+        if(lista.size() == 0) throw new NotFoundException("Usuario " + username + "no obtenido");
+        if (lista.size() > 1) throw new UnprocesableException("Usuario ya existente");
         PersonaOutputDTO personaOutputDTO = lista.get(0);
-        if(!pwd.equals(personaOutputDTO.getPassword())) throw new UnprocesableException("Password no valido");
+        if(!pwd.equals(personaOutputDTO.getPassword())) throw new UnprocesableException("Password erroneo");
         String rol =personaOutputDTO.getAdmin();
         return new ResponseEntity<>(getJWTToken(username,rol), HttpStatus.OK);
 

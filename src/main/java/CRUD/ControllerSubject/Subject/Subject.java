@@ -37,8 +37,8 @@ public class Subject {
     })
     @JoinTable(
             name = "student_subject",
-            joinColumns = {@JoinColumn(name = "id_subject")},
-            inverseJoinColumns = {@JoinColumn(name = "id_student")}
+            joinColumns = {@JoinColumn(name = "idSubject")},
+            inverseJoinColumns = {@JoinColumn(name = "idStudent")}
     )
     @JsonIgnore
     private List<Student> students;

@@ -36,7 +36,7 @@ public class Profesor {
     private String idProfesor;
 
     @OneToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "personId")
     private Persona persona;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
