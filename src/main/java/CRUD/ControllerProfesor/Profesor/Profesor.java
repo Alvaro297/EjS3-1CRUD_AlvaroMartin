@@ -26,7 +26,7 @@ public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profesor")
     @GenericGenerator(
-            name = "profesor",
+            name = "idProfesor",
             strategy = "CRUD.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
